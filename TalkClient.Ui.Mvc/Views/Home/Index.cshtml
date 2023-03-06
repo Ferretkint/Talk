@@ -1,0 +1,22 @@
+﻿@model ChatViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form method="post" asp-action="CreateChannel">
+    <input type="text" placeholder="New Channel" name="Name" class="form-control"/>
+    <button type="submit" class="btn btn-outline-primary">Create</button>
+</form>
+
+@foreach (var channel in Model.Channels)
+{
+    <h1><a asp-action="Index" asp-route-channel="@channel.Name">@channel.Name</a></h1>
+}
+
+
+
+@foreach (var message in Model.Messages)
+{
+    <div class="card">@message.Message</div>
+}
